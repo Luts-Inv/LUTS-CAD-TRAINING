@@ -1,0 +1,5101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+          content="#0A3D7A">
+
+    <title>LUTS Student | Engineering Learning Platform</title>
+
+
+    <style>
+
+        /* =====================================================
+           LUTS BRAND
+        ===================================================== */
+
+        :root {
+
+            --navy: #0A3D7A;
+            --navy-dark: #062B58;
+            --navy-light: #123F70;
+
+            --green: #5BA037;
+            --green-dark: #438326;
+
+            --charcoal: #333C44;
+
+            --blue-light: #7FA9D6;
+
+            --grey: #E6E9EE;
+            --grey-light: #F5F7FA;
+
+            --white: #FFFFFF;
+
+            --text: #26313A;
+            --text-light: #6B7280;
+
+            --danger: #C0392B;
+            --warning: #C98A00;
+
+            --shadow:
+                0 8px 25px rgba(10, 61, 122, 0.08);
+
+            --shadow-hover:
+                0 15px 35px rgba(10, 61, 122, 0.14);
+
+            --radius: 14px;
+        }
+
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: var(--grey-light);
+
+            color: var(--text);
+
+            line-height: 1.5;
+
+        }
+
+
+        button {
+
+            font-family: inherit;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =====================================================
+           TOP HEADER
+        ===================================================== */
+
+        .topbar {
+
+            height: 85px;
+
+            background: var(--white);
+
+            border-bottom:
+                1px solid var(--grey);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 28px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            cursor: pointer;
+
+        }
+
+
+        .luts-logo {
+
+            width: 81px;
+
+            height: 81px;
+
+            object-fit: contain;
+
+            display: block;
+
+        }
+
+
+        .brand-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+        .brand-title {
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+
+            color: var(--navy);
+
+        }
+
+
+        .brand-subtitle {
+
+            font-size: 9px;
+
+            color: var(--text-light);
+
+            letter-spacing: 1.1px;
+
+            text-transform: uppercase;
+
+            margin-top: 2px;
+
+        }
+
+
+        /* =====================================================
+           USER AREA
+        ===================================================== */
+
+        .user-area {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+        }
+
+
+        .notification {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid var(--grey);
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 17px;
+
+            transition: .2s;
+
+        }
+
+
+        .notification:hover {
+
+            background: var(--grey-light);
+
+        }
+
+
+        .user {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .avatar {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--navy),
+                    var(--blue-light)
+                );
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: bold;
+
+            border: 2px solid white;
+
+            box-shadow:
+                0 0 0 2px var(--grey);
+
+        }
+
+
+        .user-info strong {
+
+            display: block;
+
+            font-size: 14px;
+
+        }
+
+
+        .user-info span {
+
+            font-size: 11px;
+
+            color: var(--text-light);
+
+        }
+
+
+        /* =====================================================
+           MAIN LAYOUT
+        ===================================================== */
+
+        .layout {
+
+            display: flex;
+
+            min-height:
+                calc(100vh - 76px);
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+
+            width: 255px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    var(--navy-dark),
+                    var(--navy)
+                );
+
+            padding: 25px 15px;
+
+            color: white;
+
+            position: sticky;
+
+            top: 76px;
+
+            height:
+                calc(100vh - 76px);
+
+            flex-shrink: 0;
+
+        }
+
+
+        .menu-title {
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            color:
+                rgba(255,255,255,.55);
+
+            margin:
+                5px 12px 12px;
+
+        }
+
+
+        .menu-button {
+
+            width: 100%;
+
+            border: none;
+
+            background: transparent;
+
+            color:
+                rgba(255,255,255,.78);
+
+            padding: 13px 15px;
+
+            border-radius: 9px;
+
+            text-align: left;
+
+            margin-bottom: 5px;
+
+            font-size: 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            transition: .2s;
+
+        }
+
+
+        .menu-button:hover {
+
+            background:
+                rgba(255,255,255,.08);
+
+            color: white;
+
+        }
+
+
+        .menu-button.active {
+
+            background: white;
+
+            color: var(--navy);
+
+            font-weight: bold;
+
+        }
+
+
+        .menu-icon {
+
+            width: 22px;
+
+            text-align: center;
+
+            font-size: 16px;
+
+        }
+
+
+        .sidebar-bottom {
+
+            position: absolute;
+
+            bottom: 20px;
+
+            left: 15px;
+
+            right: 15px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.15);
+
+            padding-top: 15px;
+
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .content {
+
+            flex: 1;
+
+            padding: 35px;
+
+            max-width: 1500px;
+
+            margin: 0 auto;
+
+            width: 100%;
+
+        }
+
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
+
+        .page-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .page-heading h1 {
+
+            font-size: 30px;
+
+            color: var(--navy);
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .page-heading p {
+
+            color: var(--text-light);
+
+            font-size: 14px;
+
+        }
+
+
+        .date {
+
+            color: var(--text-light);
+
+            font-size: 13px;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            background:
+                linear-gradient(
+                    110deg,
+                    var(--navy-dark),
+                    var(--navy)
+                );
+
+            border-radius: var(--radius);
+
+            min-height: 215px;
+
+            padding: 35px;
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+
+            margin-bottom: 25px;
+
+            box-shadow: var(--shadow);
+
+        }
+
+
+        .hero::before {
+
+            content: "⚙";
+
+            position: absolute;
+
+            font-size: 280px;
+
+            right: -25px;
+
+            top: -70px;
+
+            color:
+                rgba(255,255,255,.045);
+
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+
+            height: 280px;
+
+            border:
+                38px solid
+                rgba(91,160,55,.12);
+
+            border-radius: 50%;
+
+            right: 120px;
+
+            bottom: -195px;
+
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 700px;
+
+        }
+
+
+        .hero-label {
+
+            display: inline-block;
+
+            background:
+                rgba(91,160,55,.2);
+
+            color: #BDE4A5;
+
+            padding:
+                6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .hero h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .hero p {
+
+            color:
+                rgba(255,255,255,.78);
+
+            max-width: 620px;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .hero-button {
+
+            border: none;
+
+            background: var(--green);
+
+            color: white;
+
+            padding:
+                11px 20px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+            transition: .2s;
+
+        }
+
+
+        .hero-button:hover {
+
+            background: var(--green-dark);
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .stat {
+
+            background: white;
+
+            border:
+                1px solid var(--grey);
+
+            border-radius: var(--radius);
+
+            padding: 20px;
+
+            box-shadow: var(--shadow);
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .stat::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 65px;
+
+            height: 65px;
+
+            border-radius: 50%;
+
+            right: -20px;
+
+            bottom: -20px;
+
+            background:
+                rgba(10,61,122,.05);
+
+        }
+
+
+        .stat-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 9px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                #EAF1FA;
+
+            color: var(--navy);
+
+            margin-bottom: 12px;
+
+            font-size: 18px;
+
+        }
+
+
+        .stat.green .stat-icon {
+
+            background: #EAF5E5;
+
+            color: var(--green);
+
+        }
+
+
+        .stat h3 {
+
+            font-size: 25px;
+
+            color: var(--navy);
+
+            margin-bottom: 3px;
+
+        }
+
+
+        .stat p {
+
+            font-size: 12px;
+
+            color: var(--text-light);
+
+        }
+
+
+        /* =====================================================
+           SECTION HEADER
+        ===================================================== */
+
+        .section-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .section-header h2 {
+
+            font-size: 19px;
+
+            color: var(--charcoal);
+
+        }
+
+
+        .view-all {
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--navy);
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        .view-all:hover {
+
+            color: var(--green);
+
+        }
+
+
+        /* =====================================================
+           COURSE CARDS
+        ===================================================== */
+
+        .course-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .course-card {
+
+            background: white;
+
+            border:
+                1px solid var(--grey);
+
+            border-radius: var(--radius);
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow);
+
+            transition: .2s;
+
+        }
+
+
+        .course-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow: var(--shadow-hover);
+
+        }
+
+
+        .course-banner {
+
+            height: 135px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    var(--navy-dark),
+                    var(--navy)
+                );
+
+            position: relative;
+
+            padding: 20px;
+
+            color: white;
+
+            overflow: hidden;
+
+        }
+
+
+        .course-banner::after {
+
+            content: "⚙";
+
+            position: absolute;
+
+            right: -15px;
+
+            top: -42px;
+
+            font-size: 190px;
+
+            color:
+                rgba(255,255,255,.06);
+
+        }
+
+
+        .course-code {
+
+            font-size: 10px;
+
+            letter-spacing: 1.5px;
+
+            color:
+                rgba(255,255,255,.65);
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .course-banner h3 {
+
+            margin-top: 8px;
+
+            font-size: 19px;
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 80%;
+
+        }
+
+
+        .course-body {
+
+            padding: 20px;
+
+        }
+
+
+        .course-body p {
+
+            font-size: 13px;
+
+            color: var(--text-light);
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .progress-label {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 11px;
+
+            margin-bottom: 7px;
+
+            color: var(--text-light);
+
+        }
+
+
+        .progress-track {
+
+            width: 100%;
+
+            height: 8px;
+
+            background: var(--grey);
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            margin-bottom: 17px;
+
+        }
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            background: var(--green);
+
+            border-radius: 10px;
+
+            transition:
+                width .4s ease;
+
+        }
+
+
+        .course-footer {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+        .course-info {
+
+            font-size: 11px;
+
+            color: var(--text-light);
+
+        }
+
+
+        .course-button {
+
+            border: none;
+
+            background: var(--navy);
+
+            color: white;
+
+            padding:
+                9px 14px;
+
+            border-radius: 6px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+
+        }
+
+
+        .course-button:hover {
+
+            background: var(--navy-dark);
+
+        }
+
+
+        /* =====================================================
+           LOWER GRID
+        ===================================================== */
+
+        .lower-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr;
+
+            gap: 20px;
+
+        }
+
+
+        .panel {
+
+            background: white;
+
+            border:
+                1px solid var(--grey);
+
+            border-radius: var(--radius);
+
+            padding: 22px;
+
+            box-shadow: var(--shadow);
+
+        }
+
+
+        /* =====================================================
+           ACTIVITY
+        ===================================================== */
+
+        .activity {
+
+            display: flex;
+
+            gap: 13px;
+
+            padding: 14px 0;
+
+            border-bottom:
+                1px solid var(--grey);
+
+        }
+
+
+        .activity:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .activity-icon {
+
+            width: 35px;
+
+            height: 35px;
+
+            border-radius: 50%;
+
+            background:
+                #EAF5E5;
+
+            color: var(--green);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .activity strong {
+
+            display: block;
+
+            font-size: 13px;
+
+            margin-bottom: 2px;
+
+        }
+
+
+        .activity span {
+
+            font-size: 11px;
+
+            color: var(--text-light);
+
+        }
+
+
+        /* =====================================================
+           ASSIGNMENTS
+        ===================================================== */
+
+        .assignment {
+
+            padding: 15px 0;
+
+            border-bottom:
+                1px solid var(--grey);
+
+        }
+
+
+        .assignment:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .assignment-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .assignment strong {
+
+            font-size: 13px;
+
+        }
+
+
+        .badge {
+
+            font-size: 9px;
+
+            padding:
+                4px 8px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+
+        }
+
+
+        .badge.pending {
+
+            background: #FFF4D9;
+
+            color: #A36B00;
+
+        }
+
+
+        .badge.done {
+
+            background: #EAF5E5;
+
+            color: var(--green-dark);
+
+        }
+
+
+        .assignment p {
+
+            font-size: 11px;
+
+            color: var(--text-light);
+
+        }
+
+
+        /* =====================================================
+           COURSE PAGE
+        ===================================================== */
+
+        .course-page-header {
+
+            background:
+                linear-gradient(
+                    110deg,
+                    var(--navy-dark),
+                    var(--navy)
+                );
+
+            color: white;
+
+            border-radius: var(--radius);
+
+            padding: 30px;
+
+            margin-bottom: 25px;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .course-page-header::after {
+
+            content: "⚙";
+
+            position: absolute;
+
+            right: 25px;
+
+            top: -50px;
+
+            font-size: 220px;
+
+            color:
+                rgba(255,255,255,.05);
+
+        }
+
+
+        .course-page-header-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 750px;
+
+        }
+
+
+        .back-button {
+
+            border: none;
+
+            background:
+                rgba(255,255,255,.1);
+
+            color: white;
+
+            padding:
+                8px 12px;
+
+            border-radius: 6px;
+
+            margin-bottom: 18px;
+
+            font-size: 12px;
+
+        }
+
+
+        .back-button:hover {
+
+            background:
+                rgba(255,255,255,.18);
+
+        }
+
+
+        .course-page-header h1 {
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .course-page-header p {
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           COURSE CONTENT
+        ===================================================== */
+
+        .course-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                300px 1fr;
+
+            gap: 20px;
+
+        }
+
+
+        .module-panel {
+
+            background: white;
+
+            border:
+                1px solid var(--grey);
+
+            border-radius: var(--radius);
+
+            padding: 18px;
+
+            box-shadow: var(--shadow);
+
+            height: fit-content;
+
+        }
+
+
+        .module-panel h3 {
+
+            font-size: 16px;
+
+            color: var(--navy);
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .module {
+
+            border:
+                1px solid var(--grey);
+
+            border-radius: 9px;
+
+            margin-bottom: 10px;
+
+            overflow: hidden;
+
+        }
+
+
+        .module-title {
+
+            width: 100%;
+
+            border: none;
+
+            background: var(--grey-light);
+
+            color: var(--charcoal);
+
+            padding: 12px;
+
+            text-align: left;
+
+            font-weight: bold;
+
+            font-size: 12px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .module-title:hover {
+
+            background: #EAF1FA;
+
+        }
+
+
+        .lesson-list {
+
+            display: none;
+
+            background: white;
+
+        }
+
+
+        .module.open .lesson-list {
+
+            display: block;
+
+        }
+
+
+        .lesson {
+
+            width: 100%;
+
+            border: none;
+
+            background: white;
+
+            border-top:
+                1px solid var(--grey);
+
+            padding:
+                11px 12px;
+
+            text-align: left;
+
+            font-size: 11px;
+
+            color: var(--text);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 8px;
+
+        }
+
+
+        .lesson:hover {
+
+            background: var(--grey-light);
+
+        }
+
+
+        .lesson.completed {
+
+            color: var(--green-dark);
+
+        }
+
+
+        .lesson-check {
+
+            color: var(--green);
+
+            font-weight: bold;
+
+        }
+
+
+        /* =====================================================
+           LESSON VIEWER
+        ===================================================== */
+
+        .lesson-viewer {
+
+            background: white;
+
+            border:
+                1px solid var(--grey);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+
+            min-height: 500px;
+
+            padding: 30px;
+
+        }
+
+
+        .lesson-label {
+
+            display: inline-block;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            color: var(--green-dark);
+
+            background: #EAF5E5;
+
+            padding:
+                5px 10px;
+
+            border-radius: 20px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .lesson-viewer h2 {
+
+            color: var(--navy);
+
+            font-size: 25px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .lesson-description {
+
+            color: var(--text-light);
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .lesson-content {
+
+            border-top:
+                1px solid var(--grey);
+
+            padding-top: 22px;
+
+        }
+
+
+        .lesson-content h3 {
+
+            color: var(--charcoal);
+
+            font-size: 17px;
+
+            margin:
+                20px 0 8px;
+
+        }
+
+
+        .lesson-content p {
+
+            color: var(--text);
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .lesson-content ul {
+
+            margin:
+                10px 0 15px 25px;
+
+        }
+
+
+        .lesson-content li {
+
+            margin-bottom: 6px;
+
+            font-size: 13px;
+
+        }
+
+
+        .lesson-actions {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            border-top:
+                1px solid var(--grey);
+
+            margin-top: 30px;
+
+            padding-top: 20px;
+
+            gap: 10px;
+
+        }
+
+
+        .complete-button {
+
+            border: none;
+
+            background: var(--green);
+
+            color: white;
+
+            padding:
+                11px 18px;
+
+            border-radius: 7px;
+
+            font-weight: bold;
+
+        }
+
+
+        .complete-button:hover {
+
+            background: var(--green-dark);
+
+        }
+
+
+        .complete-button.completed {
+
+            background: var(--charcoal);
+
+        }
+
+
+        /* =====================================================
+           RESOURCES
+        ===================================================== */
+
+        .resource-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .resource-card {
+
+            background: white;
+
+            border:
+                1px solid var(--grey);
+
+            border-radius: var(--radius);
+
+            padding: 22px;
+
+            box-shadow: var(--shadow);
+
+        }
+
+
+        .resource-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            background: #EAF1FA;
+
+            color: var(--navy);
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .resource-card h3 {
+
+            color: var(--navy);
+
+            font-size: 15px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .resource-card p {
+
+            color: var(--text-light);
+
+            font-size: 12px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        /* =====================================================
+           PROGRESS
+        ===================================================== */
+
+        .progress-large {
+
+            height: 14px;
+
+            background: var(--grey);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin:
+                15px 0 25px;
+
+        }
+
+
+        .progress-large-fill {
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--green),
+                    #79B956
+                );
+
+            border-radius: 20px;
+
+        }
+
+
+        .progress-items {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .progress-item {
+
+            background: var(--grey-light);
+
+            border-radius: 10px;
+
+            padding: 18px;
+
+        }
+
+
+        .progress-item strong {
+
+            display: block;
+
+            color: var(--navy);
+
+            font-size: 23px;
+
+        }
+
+
+        .progress-item span {
+
+            color: var(--text-light);
+
+            font-size: 11px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            margin-top: 35px;
+
+            background: var(--navy-dark);
+
+            color: white;
+
+            padding: 20px;
+
+            text-align: center;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        footer span {
+
+            color: var(--green);
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .course-layout {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .resource-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .topbar {
+
+                padding:
+                    0 15px;
+
+            }
+
+
+            .brand-subtitle {
+
+                display: none;
+
+            }
+
+
+            .user-info {
+
+                display: none;
+
+            }
+
+
+            .layout {
+
+                display: block;
+
+            }
+
+
+            .sidebar {
+
+                width: 100%;
+
+                height: auto;
+
+                position: sticky;
+
+                top: 76px;
+
+                z-index: 900;
+
+                padding: 8px;
+
+                overflow-x: auto;
+
+                display: flex;
+
+                gap: 5px;
+
+            }
+
+
+            .menu-title {
+
+                display: none;
+
+            }
+
+
+            .menu-button {
+
+                min-width: 115px;
+
+                margin: 0;
+
+                justify-content: center;
+
+                padding: 10px;
+
+            }
+
+
+            .sidebar-bottom {
+
+                display: none;
+
+            }
+
+
+            .content {
+
+                padding:
+                    20px 15px;
+
+            }
+
+
+            .page-heading {
+
+                display: block;
+
+            }
+
+
+            .date {
+
+                margin-top: 5px;
+
+            }
+
+
+            .hero {
+
+                padding: 25px;
+
+                min-height: 240px;
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 23px;
+
+            }
+
+
+            .course-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .lower-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .resource-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .progress-items {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .luts-logo {
+
+                width: 50px;
+
+                height: 50px;
+
+            }
+
+
+            .brand-title {
+
+                font-size: 16px;
+
+            }
+
+
+            .notification {
+
+                display: none;
+
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                gap: 10px;
+
+            }
+
+
+            .stat {
+
+                padding: 15px;
+
+            }
+
+
+            .stat h3 {
+
+                font-size: 20px;
+
+            }
+
+
+            .menu-button {
+
+                min-width: 105px;
+
+                font-size: 11px;
+
+            }
+
+
+            .lesson-viewer {
+
+                padding: 20px;
+
+            }
+
+
+            .lesson-actions {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="topbar">
+
+
+    <div class="brand"
+         onclick="showPage('dashboard')">
+
+        <img src="Luts-inv-Logo.png"
+            alt="LUTS Engineering Logo"
+            class="luts-logo"
+        >
+
+
+        <div class="brand-text">
+
+            <div class="brand-title">
+                LUTS STUDENT
+            </div>
+
+            <div class="brand-subtitle">
+                Engineering Beyond Drawings
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="user-area">
+
+
+        <button class="notification"
+                onclick="showNotification()">
+
+            🔔
+
+        </button>
+
+
+        <div class="user">
+
+            <div class="avatar">
+                S
+            </div>
+
+
+            <div class="user-info">
+
+                <strong>
+                    Student
+                </strong>
+
+                <span>
+                    Engineering Student
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN LAYOUT
+========================================================= -->
+
+<div class="layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <div class="menu-title">
+            STUDENT PORTAL
+        </div>
+
+
+        <button class="menu-button active"
+                onclick="showPage('dashboard', this)">
+
+            <span class="menu-icon">
+                ⌂
+            </span>
+
+            Dashboard
+
+        </button>
+
+
+        <button class="menu-button"
+                onclick="showPage('courses', this)">
+
+            <span class="menu-icon">
+                ▣
+            </span>
+
+            My Courses
+
+        </button>
+
+
+        <button class="menu-button"
+                onclick="showPage('assignments', this)">
+
+            <span class="menu-icon">
+                ✓
+            </span>
+
+            Assignments
+
+        </button>
+
+
+        <button class="menu-button"
+                onclick="showPage('resources', this)">
+
+            <span class="menu-icon">
+                ▤
+            </span>
+
+            Resources
+
+        </button>
+
+
+        <button class="menu-button"
+                onclick="showPage('progress', this)">
+
+            <span class="menu-icon">
+                ◔
+            </span>
+
+            My Progress
+
+        </button>
+
+
+        <div class="sidebar-bottom">
+
+
+            <button class="menu-button"
+                    onclick="showSettings()">
+
+                <span class="menu-icon">
+                    ⚙
+                </span>
+
+                Settings
+
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENT
+    ====================================================== -->
+
+    <main class="content">
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section id="dashboard">
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <h1>
+                        Student Dashboard
+                    </h1>
+
+                    <p>
+                        Welcome to the LUTS Engineering Learning Platform.
+                    </p>
+
+                </div>
+
+
+                <div class="date">
+                    Engineering • CAD • Technology
+                </div>
+
+            </div>
+
+
+
+            <!-- HERO -->
+
+            <div class="hero">
+
+
+                <div class="hero-content">
+
+
+                    <div class="hero-label">
+                        CURRENT COURSE
+                    </div>
+
+
+                    <h2>
+                        AutoCAD — Engineering Design
+                    </h2>
+
+
+                    <p>
+                        Build practical engineering design skills
+                        through structured CAD lessons, exercises
+                        and real engineering projects.
+                    </p>
+
+
+                    <button class="hero-button"
+                            onclick="openCourse()">
+
+                        Continue Learning →
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats">
+
+
+                <div class="stat">
+
+                    <div class="stat-icon">
+                        ▣
+                    </div>
+
+                    <h3>
+                        1
+                    </h3>
+
+                    <p>
+                        Active Course
+                    </p>
+
+                </div>
+
+
+                <div class="stat green">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <h3 id="completedLessonsStat">
+                        0
+                    </h3>
+
+                    <p>
+                        Lessons Completed
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-icon">
+                        ◔
+                    </div>
+
+                    <h3 id="progressStat">
+                        0%
+                    </h3>
+
+                    <p>
+                        Course Progress
+                    </p>
+
+                </div>
+
+
+                <div class="stat green">
+
+                    <div class="stat-icon">
+                        ★
+                    </div>
+
+                    <h3>
+                        0
+                    </h3>
+
+                    <p>
+                        Projects Completed
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CONTINUE LEARNING -->
+
+            <div class="section-header">
+
+                <h2>
+                    Continue Learning
+                </h2>
+
+
+                <button class="view-all"
+                        onclick="openCourse()">
+
+                    View Course →
+
+                </button>
+
+            </div>
+
+
+
+            <div class="course-grid">
+
+
+                <!-- AUTOCAD -->
+
+                <div class="course-card">
+
+
+                    <div class="course-banner">
+
+                        <div class="course-code">
+                            CAD-101
+                        </div>
+
+                        <h3>
+                            AutoCAD — Engineering Design
+                        </h3>
+
+                    </div>
+
+
+                    <div class="course-body">
+
+
+                        <p>
+                            From CAD fundamentals to complete
+                            engineering design projects.
+                        </p>
+
+
+                        <div class="progress-label">
+
+                            <span>
+                                Course Progress
+                            </span>
+
+                            <strong id="courseProgressText">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                id="courseProgressBar"
+                                style="width:0%">
+                            </div>
+
+                        </div>
+
+
+                        <div class="course-footer">
+
+                            <span class="course-info">
+                                6 Modules • 18 Lessons
+                            </span>
+
+
+                            <button
+                                class="course-button"
+                                onclick="openCourse()">
+
+                                Open Course
+
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SOLIDWORKS -->
+
+                <div class="course-card">
+
+
+                    <div class="course-banner">
+
+                        <div class="course-code">
+                            CAD-201
+                        </div>
+
+                        <h3>
+                            SolidWorks
+                        </h3>
+
+                    </div>
+
+
+                    <div class="course-body">
+
+
+                        <p>
+                            3D modelling, assemblies, engineering
+                            drawings and simulation.
+                        </p>
+
+
+                        <div class="progress-label">
+
+                            <span>
+                                Course Status
+                            </span>
+
+                            <strong>
+                                Coming Soon
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                style="width:5%">
+                            </div>
+
+                        </div>
+
+
+                        <div class="course-footer">
+
+                            <span class="course-info">
+                                Future Course
+                            </span>
+
+
+                            <button
+                                class="course-button"
+                                onclick="comingSoon()">
+
+                                Coming Soon
+
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- LOWER SECTION -->
+
+            <div class="lower-grid">
+
+
+                <!-- ACTIVITY -->
+
+                <div class="panel">
+
+
+                    <div class="section-header">
+
+                        <h2>
+                            Recent Activity
+                        </h2>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            ✓
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Welcome to LUTS Student
+                            </strong>
+
+                            <span>
+                                Your engineering learning journey starts here.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            📐
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                AutoCAD Course Available
+                            </strong>
+
+                            <span>
+                                Begin with Module 1.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity">
+
+                        <div class="activity-icon">
+                            ⚙
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Practical Project Learning
+                            </strong>
+
+                            <span>
+                                Learn CAD by building engineering projects.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ASSIGNMENTS -->
+
+                <div class="panel">
+
+
+                    <div class="section-header">
+
+                        <h2>
+                            Assignments
+                        </h2>
+
+
+                        <button
+                            class="view-all"
+                            onclick="showPage('assignments')">
+
+                            View All
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="assignment">
+
+
+                        <div class="assignment-top">
+
+                            <strong>
+                                Gear Design
+                            </strong>
+
+                            <span class="badge pending">
+                                PENDING
+                            </span>
+
+                        </div>
+
+
+                        <p>
+                            Create a complete engineering gear drawing.
+                        </p>
+
+
+                    </div>
+
+
+                    <div class="assignment">
+
+
+                        <div class="assignment-top">
+
+                            <strong>
+                                Mechanical Bracket
+                            </strong>
+
+                            <span class="badge pending">
+                                PENDING
+                            </span>
+
+                        </div>
+
+
+                        <p>
+                            Produce a dimensioned mechanical drawing.
+                        </p>
+
+
+                    </div>
+
+
+                    <div class="assignment">
+
+
+                        <div class="assignment-top">
+
+                            <strong>
+                                Basic CAD Exercise
+                            </strong>
+
+                            <span class="badge done">
+                                READY
+                            </span>
+
+                        </div>
+
+
+                        <p>
+                            Complete the introductory CAD exercise.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             COURSES PAGE
+        ================================================== -->
+
+        <section id="courses"
+                 style="display:none">
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <h1>
+                        My Courses
+                    </h1>
+
+                    <p>
+                        Your engineering and technology learning.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="course-grid">
+
+
+                <div class="course-card">
+
+
+                    <div class="course-banner">
+
+                        <div class="course-code">
+                            CAD-101
+                        </div>
+
+                        <h3>
+                            AutoCAD — Engineering Design
+                        </h3>
+
+                    </div>
+
+
+                    <div class="course-body">
+
+                        <p>
+                            Learn AutoCAD from fundamentals through
+                            practical engineering design projects.
+                        </p>
+
+
+                        <div class="progress-label">
+
+                            <span>
+                                Progress
+                            </span>
+
+                            <strong id="courseProgressText2">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-track">
+
+                            <div
+                                class="progress-fill"
+                                id="courseProgressBar2"
+                                style="width:0%">
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="course-button"
+                            onclick="openCourse()">
+
+                            Open Course →
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="course-card">
+
+
+                    <div class="course-banner">
+
+                        <div class="course-code">
+                            CAD-201
+                        </div>
+
+                        <h3>
+                            SolidWorks
+                        </h3>
+
+                    </div>
+
+
+                    <div class="course-body">
+
+                        <p>
+                            3D part modelling, assemblies, drawings
+                            and engineering simulation.
+                        </p>
+
+
+                        <button
+                            class="course-button"
+                            onclick="comingSoon()">
+
+                            Coming Soon
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             COURSE DETAIL
+        ================================================== -->
+
+        <section id="courseDetail"
+                 style="display:none">
+
+
+            <div class="course-page-header">
+
+
+                <div class="course-page-header-content">
+
+
+                    <button
+                        class="back-button"
+                        onclick="showPage('courses')">
+
+                        ← Back to Courses
+
+                    </button>
+
+
+                    <h1>
+                        AutoCAD — Engineering Design
+                    </h1>
+
+
+                    <p>
+                        CAD fundamentals, engineering drawing,
+                        practical exercises and design projects.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="course-layout">
+
+
+                <!-- MODULES -->
+
+                <div class="module-panel">
+
+
+                    <h3>
+                        Course Content
+                    </h3>
+
+
+                    <!-- MODULE 1 -->
+
+                    <div class="module open">
+
+
+                        <button
+                            class="module-title"
+                            onclick="toggleModule(this)">
+
+                            <span>
+                                Module 1 — CAD Fundamentals
+                            </span>
+
+                            <span>
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="lesson-list">
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(0)">
+
+                                <span>
+                                    1. Introduction to CAD
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check0">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(1)">
+
+                                <span>
+                                    2. AutoCAD Interface
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check1">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(2)">
+
+                                <span>
+                                    3. Drawing Setup
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check2">
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MODULE 2 -->
+
+                    <div class="module">
+
+
+                        <button
+                            class="module-title"
+                            onclick="toggleModule(this)">
+
+                            <span>
+                                Module 2 — Drawing Tools
+                            </span>
+
+                            <span>
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="lesson-list">
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(3)">
+
+                                <span>
+                                    4. Line and Polyline
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check3">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(4)">
+
+                                <span>
+                                    5. Circle and Arc
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check4">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(5)">
+
+                                <span>
+                                    6. Rectangle and Polygon
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check5">
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MODULE 3 -->
+
+                    <div class="module">
+
+
+                        <button
+                            class="module-title"
+                            onclick="toggleModule(this)">
+
+                            <span>
+                                Module 3 — Modification
+                            </span>
+
+                            <span>
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="lesson-list">
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(6)">
+
+                                <span>
+                                    7. Move and Copy
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check6">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(7)">
+
+                                <span>
+                                    8. Trim and Extend
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check7">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(8)">
+
+                                <span>
+                                    9. Offset and Mirror
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check8">
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MODULE 4 -->
+
+                    <div class="module">
+
+
+                        <button
+                            class="module-title"
+                            onclick="toggleModule(this)">
+
+                            <span>
+                                Module 4 — Annotation
+                            </span>
+
+                            <span>
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="lesson-list">
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(9)">
+
+                                <span>
+                                    10. Dimensions
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check9">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(10)">
+
+                                <span>
+                                    11. Text and Leaders
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check10">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(11)">
+
+                                <span>
+                                    12. Engineering Drawing
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check11">
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MODULE 5 -->
+
+                    <div class="module">
+
+
+                        <button
+                            class="module-title"
+                            onclick="toggleModule(this)">
+
+                            <span>
+                                Module 5 — Mechanical Design
+                            </span>
+
+                            <span>
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="lesson-list">
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(12)">
+
+                                <span>
+                                    13. Mechanical Parts
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check12">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(13)">
+
+                                <span>
+                                    14. Gear Design
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check13">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(14)">
+
+                                <span>
+                                    15. Bracket Design
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check14">
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- MODULE 6 -->
+
+                    <div class="module">
+
+
+                        <button
+                            class="module-title"
+                            onclick="toggleModule(this)">
+
+                            <span>
+                                Module 6 — Final Project
+                            </span>
+
+                            <span>
+                                +
+                            </span>
+
+                        </button>
+
+
+                        <div class="lesson-list">
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(15)">
+
+                                <span>
+                                    16. Project Brief
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check15">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(16)">
+
+                                <span>
+                                    17. Design Development
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check16">
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="lesson"
+                                onclick="openLesson(17)">
+
+                                <span>
+                                    18. Final Submission
+                                </span>
+
+                                <span
+                                    class="lesson-check"
+                                    id="check17">
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- LESSON VIEWER -->
+
+                <div class="lesson-viewer"
+                     id="lessonViewer">
+
+
+                    <div class="lesson-label">
+                        LESSON 1
+                    </div>
+
+
+                    <h2 id="lessonTitle">
+                        Introduction to CAD
+                    </h2>
+
+
+                    <p
+                        class="lesson-description"
+                        id="lessonDescription">
+
+                        Understanding Computer-Aided Design
+                        and its role in engineering.
+
+                    </p>
+
+
+                    <div
+                        class="lesson-content"
+                        id="lessonContent">
+
+
+                        <h3>
+                            What is CAD?
+                        </h3>
+
+
+                        <p>
+                            Computer-Aided Design, commonly known
+                            as CAD, is the use of computer software
+                            to create, modify, analyse and document
+                            engineering designs.
+                        </p>
+
+
+                        <p>
+                            CAD is widely used in mechanical
+                            engineering, manufacturing, civil
+                            engineering, architecture and industrial
+                            design.
+                        </p>
+
+
+                        <h3>
+                            Learning Objectives
+                        </h3>
+
+
+                        <ul>
+
+                            <li>
+                                Understand the purpose of CAD.
+                            </li>
+
+                            <li>
+                                Identify common engineering
+                                applications of CAD.
+                            </li>
+
+                            <li>
+                                Understand the AutoCAD workspace.
+                            </li>
+
+                            <li>
+                                Prepare for practical CAD drawing.
+                            </li>
+
+                        </ul>
+
+
+                        <h3>
+                            Practical Exercise
+                        </h3>
+
+
+                        <p>
+                            Open AutoCAD and identify the main
+                            areas of the interface: ribbon,
+                            command line, drawing area,
+                            navigation tools and status bar.
+                        </p>
+
+
+                    </div>
+
+
+                    <div class="lesson-actions">
+
+
+                        <span
+                            id="lessonStatus"
+                            style="font-size:12px;color:#6B7280;">
+
+                            Not completed
+
+                        </span>
+
+
+                        <button
+                            class="complete-button"
+                            id="completeButton"
+                            onclick="completeCurrentLesson()">
+
+                            Mark Lesson Complete
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ASSIGNMENTS
+        ================================================== -->
+
+        <section id="assignments"
+                 style="display:none">
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <h1>
+                        Assignments
+                    </h1>
+
+                    <p>
+                        Practical engineering design exercises.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+
+                <div class="assignment">
+
+                    <div class="assignment-top">
+
+                        <strong>
+                            Gear Design
+                        </strong>
+
+                        <span class="badge pending">
+                            PENDING
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Design a complete engineering gear
+                        using AutoCAD.
+                    </p>
+
+                </div>
+
+
+                <div class="assignment">
+
+                    <div class="assignment-top">
+
+                        <strong>
+                            Mechanical Bracket
+                        </strong>
+
+                        <span class="badge pending">
+                            PENDING
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Create a dimensioned mechanical bracket
+                        drawing.
+                    </p>
+
+                </div>
+
+
+                <div class="assignment">
+
+                    <div class="assignment-top">
+
+                        <strong>
+                            Final Engineering Project
+                        </strong>
+
+                        <span class="badge pending">
+                            NOT STARTED
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Complete a professional engineering
+                        drawing from concept to final submission.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             RESOURCES
+        ================================================== -->
+
+        <section id="resources"
+                 style="display:none">
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <h1>
+                        Learning Resources
+                    </h1>
+
+                    <p>
+                        Course notes, CAD files and learning materials.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="resource-grid">
+
+
+                <div class="resource-card">
+
+
+                    <div class="resource-icon">
+                        📄
+                    </div>
+
+
+                    <h3>
+                        AutoCAD Course Notes
+                    </h3>
+
+
+                    <p>
+                        Course notes and learning materials
+                        will be available here.
+                    </p>
+
+
+                    <button
+                        class="course-button"
+                        onclick="resourceMessage()">
+
+                        Open Resource
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="resource-card">
+
+
+                    <div class="resource-icon">
+                        📐
+                    </div>
+
+
+                    <h3>
+                        CAD Practice Files
+                    </h3>
+
+
+                    <p>
+                        Download engineering drawing
+                        exercises and CAD files.
+                    </p>
+
+
+                    <button
+                        class="course-button"
+                        onclick="resourceMessage()">
+
+                        Open Resource
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="resource-card">
+
+
+                    <div class="resource-icon">
+                        🎥
+                    </div>
+
+
+                    <h3>
+                        Video Lessons
+                    </h3>
+
+
+                    <p>
+                        Video demonstrations will be
+                        connected to lessons here.
+                    </p>
+
+
+                    <button
+                        class="course-button"
+                        onclick="resourceMessage()">
+
+                        Watch Videos
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROGRESS
+        ================================================== -->
+
+        <section id="progress"
+                 style="display:none">
+
+
+            <div class="page-heading">
+
+                <div>
+
+                    <h1>
+                        My Progress
+                    </h1>
+
+                    <p>
+                        Track your engineering learning journey.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+
+                <h2 style="color:#0A3D7A;">
+
+                    AutoCAD — Engineering Design
+
+                </h2>
+
+
+                <div class="progress-label"
+                     style="margin-top:20px;">
+
+                    <span>
+                        Overall Course Progress
+                    </span>
+
+
+                    <strong id="largeProgressText">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-large">
+
+
+                    <div
+                        class="progress-large-fill"
+                        id="largeProgressBar"
+                        style="width:0%">
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="progress-items">
+
+
+                    <div class="progress-item">
+
+                        <strong id="progressLessons">
+                            0
+                        </strong>
+
+                        <span>
+                            Lessons Completed
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-item">
+
+                        <strong>
+                            6
+                        </strong>
+
+                        <span>
+                            Modules
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-item">
+
+                        <strong>
+                            18
+                        </strong>
+
+                        <span>
+                            Total Lessons
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    ⚙ &nbsp;
+
+    ENGINEERING BEYOND DRAWINGS
+
+    <span> | </span>
+
+    SOLUTIONS THAT PERFORM
+
+    <span> | </span>
+
+    IMPACT THAT LASTS
+
+</footer>
+
+
+
+<script>
+
+
+    /* ========================================================
+       LESSON DATABASE
+       TEMPORARY VERSION
+       Later this will come from a real database.
+    ======================================================== */
+
+
+    const lessons = [
+
+        {
+            title:
+                "Introduction to CAD",
+
+            description:
+                "Understanding Computer-Aided Design and its role in engineering.",
+
+            content: `
+                <h3>What is CAD?</h3>
+
+                <p>
+                    Computer-Aided Design, commonly known as CAD,
+                    is the use of computer software to create,
+                    modify, analyse and document engineering designs.
+                </p>
+
+                <p>
+                    CAD is widely used in mechanical engineering,
+                    manufacturing, civil engineering, architecture
+                    and industrial design.
+                </p>
+
+                <h3>Learning Objectives</h3>
+
+                <ul>
+                    <li>Understand the purpose of CAD.</li>
+                    <li>Identify common engineering applications of CAD.</li>
+                    <li>Understand the AutoCAD workspace.</li>
+                    <li>Prepare for practical CAD drawing.</li>
+                </ul>
+
+                <h3>Practical Exercise</h3>
+
+                <p>
+                    Open AutoCAD and identify the main areas of
+                    the interface: ribbon, command line, drawing
+                    area, navigation tools and status bar.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "AutoCAD Interface",
+
+            description:
+                "Understanding the main areas and tools of the AutoCAD interface.",
+
+            content: `
+                <h3>AutoCAD Workspace</h3>
+
+                <p>
+                    The AutoCAD interface provides access to
+                    drawing tools, modification commands,
+                    layers, annotation and drawing management.
+                </p>
+
+                <h3>Main Areas</h3>
+
+                <ul>
+                    <li>Application menu</li>
+                    <li>Ribbon</li>
+                    <li>Drawing area</li>
+                    <li>Command line</li>
+                    <li>Status bar</li>
+                    <li>Navigation tools</li>
+                </ul>
+
+                <h3>Practical Exercise</h3>
+
+                <p>
+                    Open a new drawing and identify each major
+                    area of the AutoCAD workspace.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Drawing Setup",
+
+            description:
+                "Preparing an engineering drawing before starting the design.",
+
+            content: `
+                <h3>Drawing Preparation</h3>
+
+                <p>
+                    A professional CAD drawing should be prepared
+                    before geometry is created.
+                </p>
+
+                <h3>Important Settings</h3>
+
+                <ul>
+                    <li>Units</li>
+                    <li>Drawing limits</li>
+                    <li>Layers</li>
+                    <li>Object snaps</li>
+                    <li>Grid and snap</li>
+                </ul>
+
+                <h3>Practical Exercise</h3>
+
+                <p>
+                    Create a new engineering drawing and configure
+                    the units to millimetres.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Line and Polyline",
+
+            description:
+                "Creating accurate engineering geometry using lines and polylines.",
+
+            content: `
+                <h3>Line Command</h3>
+
+                <p>
+                    The LINE command is one of the fundamental
+                    drawing commands in AutoCAD.
+                </p>
+
+                <h3>Polyline</h3>
+
+                <p>
+                    A polyline creates connected segments that
+                    behave as a single object.
+                </p>
+
+                <h3>Practical Exercise</h3>
+
+                <p>
+                    Draw a simple mechanical profile using lines
+                    and polylines.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Circle and Arc",
+
+            description:
+                "Creating circular engineering features.",
+
+            content: `
+                <h3>Circle</h3>
+
+                <p>
+                    Circles are commonly used for holes,
+                    shafts, bearings and other mechanical features.
+                </p>
+
+                <h3>Arc</h3>
+
+                <p>
+                    Arcs are used when only part of a circular
+                    profile is required.
+                </p>
+
+                <h3>Exercise</h3>
+
+                <p>
+                    Create a mechanical flange containing
+                    a central hole and bolt-circle holes.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Rectangle and Polygon",
+
+            description:
+                "Creating regular geometric shapes for engineering designs.",
+
+            content: `
+                <h3>Rectangle</h3>
+
+                <p>
+                    Rectangles are useful for plates, brackets,
+                    housings and structural components.
+                </p>
+
+                <h3>Polygon</h3>
+
+                <p>
+                    The POLYGON command creates regular
+                    multi-sided geometry.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Move and Copy",
+
+            description:
+                "Positioning and duplicating engineering geometry.",
+
+            content: `
+                <h3>Move</h3>
+
+                <p>
+                    The MOVE command changes the location of
+                    selected objects.
+                </p>
+
+                <h3>Copy</h3>
+
+                <p>
+                    COPY creates duplicates while preserving
+                    the original geometry.
+                </p>
+
+                <h3>Exercise</h3>
+
+                <p>
+                    Create a pattern of holes using COPY.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Trim and Extend",
+
+            description:
+                "Cleaning and extending engineering geometry.",
+
+            content: `
+                <h3>Trim</h3>
+
+                <p>
+                    TRIM removes unwanted portions of objects.
+                </p>
+
+                <h3>Extend</h3>
+
+                <p>
+                    EXTEND lengthens objects until they reach
+                    a selected boundary.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Offset and Mirror",
+
+            description:
+                "Creating parallel and symmetrical geometry.",
+
+            content: `
+                <h3>Offset</h3>
+
+                <p>
+                    OFFSET creates parallel or concentric
+                    copies of geometry.
+                </p>
+
+                <h3>Mirror</h3>
+
+                <p>
+                    MIRROR creates symmetrical copies across
+                    a specified axis.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Dimensions",
+
+            description:
+                "Adding engineering dimensions to drawings.",
+
+            content: `
+                <h3>Engineering Dimensions</h3>
+
+                <p>
+                    Dimensions communicate the size and
+                    location of features on engineering drawings.
+                </p>
+
+                <ul>
+                    <li>Linear dimensions</li>
+                    <li>Aligned dimensions</li>
+                    <li>Angular dimensions</li>
+                    <li>Diameter dimensions</li>
+                    <li>Radius dimensions</li>
+                </ul>
+            `
+        },
+
+
+        {
+            title:
+                "Text and Leaders",
+
+            description:
+                "Adding technical notes and annotations.",
+
+            content: `
+                <h3>Technical Annotation</h3>
+
+                <p>
+                    Text and leaders are used to communicate
+                    manufacturing and engineering information.
+                </p>
+
+                <h3>Exercise</h3>
+
+                <p>
+                    Add material information and manufacturing
+                    notes to a mechanical drawing.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Engineering Drawing",
+
+            description:
+                "Combining geometry and annotation into a professional drawing.",
+
+            content: `
+                <h3>Engineering Drawing</h3>
+
+                <p>
+                    A professional engineering drawing combines
+                    geometry, dimensions, annotations and
+                    drawing standards.
+                </p>
+
+                <h3>Exercise</h3>
+
+                <p>
+                    Produce a complete dimensioned engineering
+                    drawing using the tools learned so far.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Mechanical Parts",
+
+            description:
+                "Applying AutoCAD tools to mechanical components.",
+
+            content: `
+                <h3>Mechanical Design</h3>
+
+                <p>
+                    Mechanical components can be developed
+                    using a combination of geometric and
+                    modification commands.
+                </p>
+
+                <h3>Exercise</h3>
+
+                <p>
+                    Create a simple mechanical component
+                    from an engineering sketch.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Gear Design",
+
+            description:
+                "Designing a practical engineering gear.",
+
+            content: `
+                <h3>Gear Design Project</h3>
+
+                <p>
+                    You will develop a simplified engineering
+                    gear using accurate geometry.
+                </p>
+
+                <h3>Project Requirements</h3>
+
+                <ul>
+                    <li>Define gear centre.</li>
+                    <li>Create pitch geometry.</li>
+                    <li>Create teeth.</li>
+                    <li>Create bore.</li>
+                    <li>Add dimensions.</li>
+                    <li>Prepare final drawing.</li>
+                </ul>
+            `
+        },
+
+
+        {
+            title:
+                "Bracket Design",
+
+            description:
+                "Designing and documenting a mechanical bracket.",
+
+            content: `
+                <h3>Bracket Project</h3>
+
+                <p>
+                    Design a mechanical mounting bracket using
+                    standard engineering drawing practices.
+                </p>
+
+                <h3>Requirements</h3>
+
+                <ul>
+                    <li>Base plate</li>
+                    <li>Mounting holes</li>
+                    <li>Support features</li>
+                    <li>Dimensions</li>
+                    <li>Material note</li>
+                </ul>
+            `
+        },
+
+
+        {
+            title:
+                "Project Brief",
+
+            description:
+                "Understanding the final engineering design project.",
+
+            content: `
+                <h3>Final Project</h3>
+
+                <p>
+                    The final project brings together the
+                    AutoCAD skills developed throughout the course.
+                </p>
+
+                <h3>Objective</h3>
+
+                <p>
+                    Develop a complete engineering drawing
+                    from an initial concept to final documentation.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Design Development",
+
+            description:
+                "Developing the final engineering design.",
+
+            content: `
+                <h3>Design Development</h3>
+
+                <p>
+                    Develop your geometry systematically,
+                    check dimensions and apply appropriate
+                    engineering drawing conventions.
+                </p>
+            `
+        },
+
+
+        {
+            title:
+                "Final Submission",
+
+            description:
+                "Preparing and submitting the final engineering project.",
+
+            content: `
+                <h3>Final Submission</h3>
+
+                <p>
+                    Review your drawing carefully before submission.
+                </p>
+
+                <h3>Submission Checklist</h3>
+
+                <ul>
+                    <li>Correct drawing units</li>
+                    <li>Complete geometry</li>
+                    <li>Correct dimensions</li>
+                    <li>Clear annotations</li>
+                    <li>Professional layout</li>
+                    <li>Correct file naming</li>
+                </ul>
+            `
+        }
+
+    ];
+
+
+
+    /* ========================================================
+       APPLICATION STATE
+    ======================================================== */
+
+    let currentLesson = 0;
+
+    let completedLessons =
+        JSON.parse(
+            localStorage.getItem("lutsCompletedLessons")
+        ) || [];
+
+
+
+    /* ========================================================
+       PAGE NAVIGATION
+    ======================================================== */
+
+    function showPage(page, button = null) {
+
+
+        const pages = [
+
+            "dashboard",
+            "courses",
+            "courseDetail",
+            "assignments",
+            "resources",
+            "progress"
+
+        ];
+
+
+        pages.forEach(function(id) {
+
+            const element =
+                document.getElementById(id);
+
+            if (element) {
+
+                element.style.display = "none";
+
+            }
+
+        });
+
+
+        const selected =
+            document.getElementById(page);
+
+
+        if (selected) {
+
+            selected.style.display = "block";
+
+        }
+
+
+        document
+            .querySelectorAll(".menu-button")
+            .forEach(function(btn) {
+
+                btn.classList.remove("active");
+
+            });
+
+
+        if (button) {
+
+            button.classList.add("active");
+
+        }
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+
+        updateProgress();
+
+    }
+
+
+
+    /* ========================================================
+       OPEN COURSE
+    ======================================================== */
+
+    function openCourse() {
+
+        showPage("courseDetail");
+
+        openLesson(currentLesson);
+
+    }
+
+
+
+    /* ========================================================
+       OPEN LESSON
+    ======================================================== */
+
+    function openLesson(index) {
+
+
+        currentLesson = index;
+
+
+        const lesson =
+            lessons[index];
+
+
+        if (!lesson) {
+
+            return;
+
+        }
+
+
+        document.getElementById(
+            "lessonTitle"
+        ).textContent =
+            lesson.title;
+
+
+        document.getElementById(
+            "lessonDescription"
+        ).textContent =
+            lesson.description;
+
+
+        document.getElementById(
+            "lessonContent"
+        ).innerHTML =
+            lesson.content;
+
+
+        updateLessonStatus();
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+
+    /* ========================================================
+       MODULE TOGGLE
+    ======================================================== */
+
+    function toggleModule(button) {
+
+
+        const module =
+            button.parentElement;
+
+
+        module.classList.toggle("open");
+
+
+        const symbol =
+            button.querySelector("span:last-child");
+
+
+        if (
+            module.classList.contains("open")
+        ) {
+
+            symbol.textContent = "−";
+
+        } else {
+
+            symbol.textContent = "+";
+
+        }
+
+    }
+
+
+
+    /* ========================================================
+       COMPLETE LESSON
+    ======================================================== */
+
+    function completeCurrentLesson() {
+
+
+        if (
+            !completedLessons.includes(currentLesson)
+        ) {
+
+            completedLessons.push(currentLesson);
+
+        }
+
+
+        localStorage.setItem(
+            "lutsCompletedLessons",
+            JSON.stringify(completedLessons)
+        );
+
+
+        updateLessonStatus();
+
+        updateProgress();
+
+    }
+
+
+
+    /* ========================================================
+       LESSON STATUS
+    ======================================================== */
+
+    function updateLessonStatus() {
+
+
+        const button =
+            document.getElementById(
+                "completeButton"
+            );
+
+
+        const status =
+            document.getElementById(
+                "lessonStatus"
+            );
+
+
+        const check =
+            document.getElementById(
+                "check" + currentLesson
+            );
+
+
+        if (
+            completedLessons.includes(currentLesson)
+        ) {
+
+            button.textContent =
+                "✓ Lesson Completed";
+
+
+            button.classList.add(
+                "completed"
+            );
+
+
+            status.textContent =
+                "Completed";
+
+
+            status.style.color =
+                "#438326";
+
+
+            if (check) {
+
+                check.textContent = "✓";
+
+            }
+
+        } else {
+
+            button.textContent =
+                "Mark Lesson Complete";
+
+
+            button.classList.remove(
+                "completed"
+            );
+
+
+            status.textContent =
+                "Not completed";
+
+
+            status.style.color =
+                "#6B7280";
+
+
+            if (check) {
+
+                check.textContent = "";
+
+            }
+
+        }
+
+
+        updateAllLessonChecks();
+
+    }
+
+
+
+    /* ========================================================
+       UPDATE ALL LESSON CHECKS
+    ======================================================== */
+
+    function updateAllLessonChecks() {
+
+
+        for (
+            let i = 0;
+            i < lessons.length;
+            i++
+        ) {
+
+
+            const check =
+                document.getElementById(
+                    "check" + i
+                );
+
+
+            if (!check) {
+
+                continue;
+
+            }
+
+
+            if (
+                completedLessons.includes(i)
+            ) {
+
+                check.textContent = "✓";
+
+            } else {
+
+                check.textContent = "";
+
+            }
+
+        }
+
+    }
+
+
+
+    /* ========================================================
+       UPDATE PROGRESS
+    ======================================================== */
+
+    function updateProgress() {
+
+
+        const total =
+            lessons.length;
+
+
+        const completed =
+            completedLessons.length;
+
+
+        const percentage =
+            total === 0
+                ? 0
+                : Math.round(
+                    completed / total * 100
+                );
+
+
+        const elements = {
+
+            stat:
+                document.getElementById(
+                    "completedLessonsStat"
+                ),
+
+            progressStat:
+                document.getElementById(
+                    "progressStat"
+                ),
+
+            text:
+                document.getElementById(
+                    "courseProgressText"
+                ),
+
+            bar:
+                document.getElementById(
+                    "courseProgressBar"
+                ),
+
+            text2:
+                document.getElementById(
+                    "courseProgressText2"
+                ),
+
+            bar2:
+                document.getElementById(
+                    "courseProgressBar2"
+                ),
+
+            largeText:
+                document.getElementById(
+                    "largeProgressText"
+                ),
+
+            largeBar:
+                document.getElementById(
+                    "largeProgressBar"
+                ),
+
+            progressLessons:
+                document.getElementById(
+                    "progressLessons"
+                )
+
+        };
+
+
+        if (elements.stat) {
+
+            elements.stat.textContent =
+                completed;
+
+        }
+
+
+        if (elements.progressStat) {
+
+            elements.progressStat.textContent =
+                percentage + "%";
+
+        }
+
+
+        if (elements.text) {
+
+            elements.text.textContent =
+                percentage + "%";
+
+        }
+
+
+        if (elements.bar) {
+
+            elements.bar.style.width =
+                percentage + "%";
+
+        }
+
+
+        if (elements.text2) {
+
+            elements.text2.textContent =
+                percentage + "%";
+
+        }
+
+
+        if (elements.bar2) {
+
+            elements.bar2.style.width =
+                percentage + "%";
+
+        }
+
+
+        if (elements.largeText) {
+
+            elements.largeText.textContent =
+                percentage + "%";
+
+        }
+
+
+        if (elements.largeBar) {
+
+            elements.largeBar.style.width =
+                percentage + "%";
+
+        }
+
+
+        if (elements.progressLessons) {
+
+            elements.progressLessons.textContent =
+                completed;
+
+        }
+
+
+        updateAllLessonChecks();
+
+    }
+
+
+
+    /* ========================================================
+       NOTIFICATION
+    ======================================================== */
+
+    function showNotification() {
+
+        alert(
+            "LUTS Student notifications will appear here."
+        );
+
+    }
+
+
+
+    /* ========================================================
+       SETTINGS
+    ======================================================== */
+
+    function showSettings() {
+
+        alert(
+            "Student settings will be connected to your account system later."
+        );
+
+    }
+
+
+
+    /* ========================================================
+       COMING SOON
+    ======================================================== */
+
+    function comingSoon() {
+
+        alert(
+            "This course will be available soon."
+        );
+
+    }
+
+
+
+    /* ========================================================
+       RESOURCES
+    ======================================================== */
+
+    function resourceMessage() {
+
+        alert(
+            "Your course materials will be connected here."
+        );
+
+    }
+
+
+
+    /* ========================================================
+       INITIALIZE
+    ======================================================== */
+
+    updateProgress();
+
+    updateLessonStatus();
+
+
+</script>
+
+
+</body>
+
+</html>
