@@ -1852,7 +1852,102 @@
             font-size: 11px;
 
         }
+/* =====================================================
+   TEACHER / ADMIN
+===================================================== */
 
+.admin-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.admin-card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.admin-input,
+.admin-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #d9dfe7;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.admin-input:focus,
+.admin-textarea:focus {
+    border-color: #2563eb;
+}
+
+.admin-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.admin-content-box {
+    min-height: 280px;
+}
+
+.admin-save {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-save:hover {
+    opacity: 0.9;
+}
+
+.admin-lesson-item {
+    border: 1px solid #e1e5eb;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.admin-lesson-item h3 {
+    margin: 0 0 6px;
+}
+
+.admin-lesson-item p {
+    margin: 5px 0;
+    color: #667085;
+}
+
+.admin-delete {
+    margin-top: 12px;
+    border: none;
+    background: #dc2626;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.empty-message {
+    color: #667085;
+}
 
         /* =====================================================
            FOOTER
@@ -2295,7 +2390,10 @@
             My Progress
 
         </button>
-
+<button class="menu-button" onclick="showPage('admin', this)">
+    <span class="menu-icon">✎</span>
+    Teacher / Admin
+</button>
 
         <div class="sidebar-bottom">
 
@@ -3966,7 +4064,114 @@
 
 
         </section>
+<!-- =====================================================
+     TEACHER / ADMIN PAGE
+===================================================== -->
 
+<section id="admin" style="display:none;">
+
+    <div class="page-header">
+        <div>
+            <h1>Teacher / Admin</h1>
+            <p>Create and manage your teaching content.</p>
+        </div>
+    </div>
+
+    <div class="admin-card">
+
+        <h2>Add New Lesson</h2>
+
+        <div class="form-group">
+            <label>Course</label>
+
+            <input
+                type="text"
+                id="adminCourse"
+                class="admin-input"
+                placeholder="e.g. AutoCAD — Engineering Design"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Course Code</label>
+
+            <input
+                type="text"
+                id="adminCourseCode"
+                class="admin-input"
+                placeholder="e.g. CAD-101"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Module</label>
+
+            <input
+                type="text"
+                id="adminModule"
+                class="admin-input"
+                placeholder="e.g. CAD Fundamentals"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Lesson Title</label>
+
+            <input
+                type="text"
+                id="adminLessonTitle"
+                class="admin-input"
+                placeholder="e.g. Introduction to CAD"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Lesson Description</label>
+
+            <textarea
+                id="adminLessonDescription"
+                class="admin-textarea"
+                placeholder="Enter a short description of the lesson..."
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Teaching Content</label>
+
+            <textarea
+                id="adminLessonContent"
+                class="admin-textarea admin-content-box"
+                placeholder="Write your teaching material here..."
+            ></textarea>
+        </div>
+
+        <button
+            class="admin-save"
+            onclick="saveAdminLesson()"
+        >
+            + Save Lesson
+        </button>
+
+    </div>
+
+
+    <!-- SAVED LESSONS -->
+
+    <div class="admin-card">
+
+        <h2>My Lessons</h2>
+
+        <div id="adminLessonList">
+
+            <p class="empty-message">
+                No additional lessons created yet.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
     </main>
 
@@ -4546,16 +4751,15 @@
     function showPage(page, button = null) {
 
 
-        const pages = [
-
-            "dashboard",
-            "courses",
-            "courseDetail",
-            "assignments",
-            "resources",
-            "progress"
-
-        ];
+const pages = [
+    "dashboard",
+    "courses",
+    "courseDetail",
+    "assignments",
+    "resources",
+    "progress",
+    "admin"
+];
 
 
         pages.forEach(function(id) {
@@ -5091,7 +5295,218 @@
     updateProgress();
 
     updateLessonStatus();
+/* =====================================================
+   TEACHER / ADMIN LESSON SYSTEM
+===================================================== */
 
+let adminLessons = JSON.parse(
+    localStorage.getItem("lutsAdminLessons")
+) || [];
+
+
+/* SAVE LESSON */
+
+function saveAdminLesson() {
+
+    const course = document.getElementById("adminCourse").value.trim();
+    const courseCode = document.getElementById("adminCourseCode").value.trim();
+    const module = document.getElementById("adminModule").value.trim();
+    const title = document.getElementById("adminLessonTitle").value.trim();
+    const description = document.getElementById("adminLessonDescription").value.trim();
+    const content = document.getElementById("adminLessonContent").value.trim();
+
+
+    if (!course || !module || !title || !content) {
+
+        alert(
+            "Please enter the Course, Module, Lesson Title and Teaching Content."
+        );
+
+        return;
+    }
+
+
+    const newLesson = {
+
+        id: Date.now(),
+
+        course: course,
+
+        courseCode: courseCode,
+
+        module: module,
+
+        title: title,
+
+        description: description,
+
+        content: content,
+
+        createdAt: new Date().toISOString()
+
+    };
+
+
+    adminLessons.push(newLesson);
+
+
+    localStorage.setItem(
+        "lutsAdminLessons",
+        JSON.stringify(adminLessons)
+    );
+
+
+    alert("Lesson saved successfully!");
+
+
+    clearAdminForm();
+
+    renderAdminLessons();
+
+}
+
+
+/* CLEAR FORM */
+
+function clearAdminForm() {
+
+    document.getElementById("adminCourse").value = "";
+
+    document.getElementById("adminCourseCode").value = "";
+
+    document.getElementById("adminModule").value = "";
+
+    document.getElementById("adminLessonTitle").value = "";
+
+    document.getElementById("adminLessonDescription").value = "";
+
+    document.getElementById("adminLessonContent").value = "";
+
+}
+
+
+/* DISPLAY LESSONS */
+
+function renderAdminLessons() {
+
+    const container =
+        document.getElementById("adminLessonList");
+
+
+    if (!container) {
+        return;
+    }
+
+
+    if (adminLessons.length === 0) {
+
+        container.innerHTML = `
+            <p class="empty-message">
+                No additional lessons created yet.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    adminLessons.forEach((lesson, index) => {
+
+        const item = document.createElement("div");
+
+        item.className = "admin-lesson-item";
+
+
+        item.innerHTML = `
+
+            <h3>${escapeHTML(lesson.title)}</h3>
+
+            <p>
+                <strong>Course:</strong>
+                ${escapeHTML(lesson.course)}
+            </p>
+
+            <p>
+                <strong>Module:</strong>
+                ${escapeHTML(lesson.module)}
+            </p>
+
+            <p>
+                ${escapeHTML(lesson.description || "")}
+            </p>
+
+            <button
+                class="admin-delete"
+                onclick="deleteAdminLesson(${index})"
+            >
+                Delete
+            </button>
+
+        `;
+
+
+        container.appendChild(item);
+
+    });
+
+}
+
+
+/* DELETE LESSON */
+
+function deleteAdminLesson(index) {
+
+    if (
+        !confirm(
+            "Are you sure you want to delete this lesson?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    adminLessons.splice(index, 1);
+
+
+    localStorage.setItem(
+        "lutsAdminLessons",
+        JSON.stringify(adminLessons)
+    );
+
+
+    renderAdminLessons();
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text) {
+
+    const div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* LOAD ADMIN LESSONS */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        renderAdminLessons();
+
+    }
+);
 
 </script>
 
