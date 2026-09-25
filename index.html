@@ -1368,333 +1368,394 @@
 
 
         /* =====================================================
-           COURSE CONTENT
-        ===================================================== */
+       <!-- =====================================================
+/* =========================================================
+   COURSE CONTENT
+   ========================================================= */
+
+.course-content-section {
+    margin-top: 25px;
+}
+
+.course-content-title {
+    color: #003b78;
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   MODULE
+   ========================================================= */
+
+.course-module {
+    background: #ffffff;
+    border: 1px solid #e1e7ef;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+}
+
+.course-module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    background: #f5f8fc;
+    cursor: pointer;
+}
+
+.course-module-header:hover {
+    background: #edf3fa;
+}
+
+.module-title-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.module-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #003b78;
+    color: white;
 
-        .course-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            display: grid;
+    font-weight: bold;
+    font-size: 14px;
+}
 
-            grid-template-columns:
-                300px 1fr;
+.module-title {
+    color: #003b78;
+    font-size: 17px;
+    font-weight: 700;
+}
 
-            gap: 20px;
+.module-count {
+    color: #6b7280;
+    font-size: 13px;
+}
 
-        }
+.module-arrow {
+    font-size: 20px;
+    color: #003b78;
+    transition: transform 0.2s;
+}
 
 
-        .module-panel {
+/* =========================================================
+   LESSON LIST
+   ========================================================= */
 
-            background: white;
+.module-lessons {
+    padding: 8px 15px 15px;
+}
 
-            border:
-                1px solid var(--grey);
+.lesson-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
-            border-radius: var(--radius);
+    padding: 15px;
 
-            padding: 18px;
+    border-bottom: 1px solid #edf0f4;
 
-            box-shadow: var(--shadow);
+    cursor: pointer;
 
-            height: fit-content;
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
 
-        }
+.lesson-card:last-child {
+    border-bottom: none;
+}
 
+.lesson-card:hover {
+    background: #f7faff;
+    transform: translateX(3px);
+}
 
-        .module-panel h3 {
+.lesson-number {
+    min-width: 36px;
+    height: 36px;
 
-            font-size: 16px;
+    border-radius: 8px;
 
-            color: var(--navy);
+    background: #eaf3e4;
 
-            margin-bottom: 15px;
+    color: #3c7a22;
 
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    font-size: 12px;
+    font-weight: bold;
+}
 
-        .module {
+.lesson-info {
+    flex: 1;
+}
 
-            border:
-                1px solid var(--grey);
+.lesson-card-title {
+    margin: 0 0 4px;
 
-            border-radius: 9px;
+    color: #003b78;
 
-            margin-bottom: 10px;
+    font-size: 15px;
 
-            overflow: hidden;
+    font-weight: 700;
+}
 
-        }
+.lesson-card-description {
+    margin: 0;
 
+    color: #6b7280;
 
-        .module-title {
+    font-size: 13px;
 
-            width: 100%;
+    line-height: 1.5;
+}
 
-            border: none;
+.lesson-status {
+    color: #9ca3af;
+    font-size: 18px;
+}
 
-            background: var(--grey-light);
+.lesson-status.completed {
+    color: #3c8c2d;
+}
 
-            color: var(--charcoal);
 
-            padding: 12px;
+/* =========================================================
+   LESSON VIEWER
+   ========================================================= */
 
-            text-align: left;
+.lesson-viewer {
+    display: none;
 
-            font-weight: bold;
+    margin-top: 25px;
 
-            font-size: 12px;
+    background: #ffffff;
 
-            display: flex;
+    border-radius: 14px;
 
-            justify-content: space-between;
+    border: 1px solid #e1e7ef;
 
-            align-items: center;
+    padding: 30px;
 
-        }
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
 
+.lesson-back-button {
+    border: none;
 
-        .module-title:hover {
+    background: #edf3fa;
 
-            background: #EAF1FA;
+    color: #003b78;
 
-        }
+    padding: 9px 15px;
 
+    border-radius: 7px;
 
-        .lesson-list {
+    cursor: pointer;
 
-            display: none;
+    font-weight: 600;
 
-            background: white;
+    margin-bottom: 25px;
+}
 
-        }
+.lesson-back-button:hover {
+    background: #dfeaf7;
+}
 
+.lesson-header {
+    border-bottom: 1px solid #e5e7eb;
 
-        .module.open .lesson-list {
+    padding-bottom: 20px;
 
-            display: block;
+    margin-bottom: 25px;
+}
 
-        }
+.lesson-module-label {
+    display: inline-block;
 
+    padding: 6px 12px;
 
-        .lesson {
+    border-radius: 20px;
 
-            width: 100%;
+    background: #eaf3e4;
 
-            border: none;
+    color: #3c7a22;
 
-            background: white;
+    font-size: 12px;
 
-            border-top:
-                1px solid var(--grey);
+    font-weight: bold;
 
-            padding:
-                11px 12px;
+    margin-bottom: 12px;
+}
 
-            text-align: left;
+.lesson-header h1 {
+    color: #003b78;
 
-            font-size: 11px;
+    margin: 0 0 10px;
 
-            color: var(--text);
+    font-size: 30px;
+}
 
-            display: flex;
+.lesson-header p {
+    color: #64748b;
 
-            justify-content: space-between;
+    margin: 0;
 
-            gap: 8px;
+    line-height: 1.6;
+}
 
-        }
 
+/* =========================================================
+   LESSON CONTENT
+   ========================================================= */
 
-        .lesson:hover {
+.lesson-content {
+    color: #1f2937;
 
-            background: var(--grey-light);
+    font-size: 16px;
 
-        }
+    line-height: 1.8;
 
+    max-width: 850px;
+}
 
-        .lesson.completed {
+.lesson-content h3 {
+    color: #003b78;
 
-            color: var(--green-dark);
+    margin-top: 28px;
 
-        }
+    margin-bottom: 12px;
+}
 
+.lesson-content p {
+    margin-bottom: 16px;
+}
 
-        .lesson-check {
+.lesson-content li {
+    margin-bottom: 8px;
+}
 
-            color: var(--green);
 
-            font-weight: bold;
+/* =========================================================
+   COMPLETE BUTTON
+   ========================================================= */
 
-        }
+.lesson-actions {
+    margin-top: 35px;
 
+    padding-top: 20px;
 
-        /* =====================================================
-           LESSON VIEWER
-        ===================================================== */
+    border-top: 1px solid #e5e7eb;
+}
 
-        .lesson-viewer {
+.complete-lesson-button {
+    border: none;
 
-            background: white;
+    background: #0b4d8a;
 
-            border:
-                1px solid var(--grey);
+    color: white;
 
-            border-radius: var(--radius);
+    padding: 13px 22px;
 
-            box-shadow: var(--shadow);
+    border-radius: 8px;
 
-            min-height: 500px;
+    cursor: pointer;
 
-            padding: 30px;
+    font-size: 14px;
 
-        }
+    font-weight: 700;
+}
 
+.complete-lesson-button:hover {
+    background: #083b69;
+}
 
-        .lesson-label {
 
-            display: inline-block;
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
-            font-size: 10px;
+@media (max-width: 700px) {
 
-            font-weight: bold;
+    .lesson-viewer {
+        padding: 20px;
+    }
 
-            color: var(--green-dark);
+    .lesson-header h1 {
+        font-size: 24px;
+    }
 
-            background: #EAF5E5;
+    .course-module-header {
+        padding: 15px;
+    }
 
-            padding:
-                5px 10px;
+    .lesson-card {
+        padding: 13px 8px;
+    }
 
-            border-radius: 20px;
+}
 
-            margin-bottom: 12px;
 
-        }
+<!-- =====================================================
+     LESSON VIEWER
+     ===================================================== -->
 
+<div id="lessonViewer" class="lesson-viewer">
 
-        .lesson-viewer h2 {
+    <button class="lesson-back-button"
+            onclick="backToCourseContent()">
+        ← Back to Course Content
+    </button>
 
-            color: var(--navy);
+    <div class="lesson-header">
 
-            font-size: 25px;
+        <span id="lessonModule"
+              class="lesson-module-label">
+            Module
+        </span>
 
-            margin-bottom: 10px;
+        <h1 id="lessonTitle">
+            Lesson Title
+        </h1>
 
-        }
+        <p id="lessonDescription">
+            Lesson description
+        </p>
 
+    </div>
 
-        .lesson-description {
+    <div id="lessonContent"
+         class="lesson-content">
 
-            color: var(--text-light);
+    </div>
 
-            font-size: 14px;
+    <div class="lesson-actions">
 
-            margin-bottom: 25px;
+        <button id="completeLessonButton"
+                class="complete-lesson-button"
+                onclick="completeCurrentLesson()">
 
-        }
+            ✓ Mark Lesson Complete
 
+        </button>
 
-        .lesson-content {
+    </div>
 
-            border-top:
-                1px solid var(--grey);
-
-            padding-top: 22px;
-
-        }
-
-
-        .lesson-content h3 {
-
-            color: var(--charcoal);
-
-            font-size: 17px;
-
-            margin:
-                20px 0 8px;
-
-        }
-
-
-        .lesson-content p {
-
-            color: var(--text);
-
-            font-size: 14px;
-
-            margin-bottom: 12px;
-
-        }
-
-
-        .lesson-content ul {
-
-            margin:
-                10px 0 15px 25px;
-
-        }
-
-
-        .lesson-content li {
-
-            margin-bottom: 6px;
-
-            font-size: 13px;
-
-        }
-
-
-        .lesson-actions {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            border-top:
-                1px solid var(--grey);
-
-            margin-top: 30px;
-
-            padding-top: 20px;
-
-            gap: 10px;
-
-        }
-
-
-        .complete-button {
-
-            border: none;
-
-            background: var(--green);
-
-            color: white;
-
-            padding:
-                11px 18px;
-
-            border-radius: 7px;
-
-            font-weight: bold;
-
-        }
-
-
-        .complete-button:hover {
-
-            background: var(--green-dark);
-
-        }
-
-
-        .complete-button.completed {
-
-            background: var(--charcoal);
-
-        }
-
+</div>
 
         /* =====================================================
            RESOURCES
@@ -4378,13 +4439,21 @@ const pages = [
        OPEN COURSE
     ======================================================== */
 
-    function openCourse() {
+function openCourse() {
 
-        showPage("courseDetail");
+    showPage("courseDetail");
 
-        openLesson(currentLesson);
+    renderCourseContent();
 
-    }
+    document.getElementById("lessonViewer").style.display = "none";
+
+    document.getElementById("courseContentList").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 
 
 
@@ -4394,12 +4463,278 @@ const pages = [
 
     function openLesson(index) {
 
+    currentLesson = index;
 
-        currentLesson = index;
+    const lesson = lessons[index];
+
+    if (!lesson) {
+        return;
+    }
+
+    document.getElementById("courseContentList").style.display = "none";
+
+    document.getElementById("lessonViewer").style.display = "block";
+
+    document.getElementById("lessonModule").textContent =
+        lesson.moduleTitle;
+
+    document.getElementById("lessonTitle").textContent =
+        lesson.title;
+
+    document.getElementById("lessonDescription").textContent =
+        lesson.description;
+
+    document.getElementById("lessonContent").innerHTML =
+        lesson.content;
+
+    updateLessonStatus();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+/* =========================================================
+   RENDER COURSE CONTENT
+   ========================================================= */
+
+function renderCourseContent() {
+
+    const container =
+        document.getElementById("courseContentList");
+
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = "";
+
+    let globalLessonNumber = 0;
+
+    courseData.modules.forEach((module, moduleIndex) => {
+
+        const moduleElement =
+            document.createElement("div");
+
+        moduleElement.className = "course-module";
+
+        const header =
+            document.createElement("div");
+
+        header.className =
+            "course-module-header";
+
+        header.onclick = function () {
+
+            toggleCourseModule(moduleIndex);
+
+        };
 
 
-        const lesson =
-            lessons[index];
+        header.innerHTML = `
+
+            <div class="module-title-area">
+
+                <div class="module-number">
+                    ${moduleIndex + 1}
+                </div>
+
+                <div>
+
+                    <div class="module-title">
+                        ${module.title}
+                    </div>
+
+                    <div class="module-count">
+                        ${module.lessons.length}
+                        ${module.lessons.length === 1
+                            ? "Lesson"
+                            : "Lessons"}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="module-arrow"
+                 id="moduleArrow-${moduleIndex}">
+                ▼
+            </div>
+
+        `;
+
+
+        const lessonContainer =
+            document.createElement("div");
+
+        lessonContainer.className =
+            "module-lessons";
+
+        lessonContainer.id =
+            `moduleLessons-${moduleIndex}`;
+
+
+        module.lessons.forEach((lesson) => {
+
+            const lessonIndex =
+                globalLessonNumber;
+
+            const lessonElement =
+                document.createElement("div");
+
+            lessonElement.className =
+                "lesson-card";
+
+            const isCompleted =
+                completedLessons.includes(lessonIndex);
+
+
+            lessonElement.innerHTML = `
+
+                <div class="lesson-number">
+
+                    ${lessonIndex + 1}
+
+                </div>
+
+
+                <div class="lesson-info">
+
+                    <h3 class="lesson-card-title">
+
+                        ${lesson.title}
+
+                    </h3>
+
+                    <p class="lesson-card-description">
+
+                        ${lesson.description}
+
+                    </p>
+
+                </div>
+
+
+                <div class="lesson-status
+                    ${isCompleted ? "completed" : ""}">
+
+                    ${isCompleted ? "✓" : "›"}
+
+                </div>
+
+            `;
+
+
+            lessonElement.onclick = function () {
+
+                openLesson(lessonIndex);
+
+            };
+
+
+            lessonContainer.appendChild(
+                lessonElement
+            );
+
+
+            globalLessonNumber++;
+
+        });
+
+
+        moduleElement.appendChild(header);
+
+        moduleElement.appendChild(
+            lessonContainer
+        );
+
+        container.appendChild(
+            moduleElement
+        );
+
+    });
+
+}
+
+    /* =========================================================
+   OPEN / CLOSE COURSE MODULE
+   ========================================================= */
+
+function toggleCourseModule(moduleIndex) {
+
+    const lessonsElement =
+        document.getElementById(
+            `moduleLessons-${moduleIndex}`
+        );
+
+    const arrow =
+        document.getElementById(
+            `moduleArrow-${moduleIndex}`
+        );
+
+    if (!lessonsElement) {
+        return;
+    }
+
+    if (
+        lessonsElement.style.display === "none"
+    ) {
+
+        lessonsElement.style.display = "block";
+
+        if (arrow) {
+            arrow.style.transform = "rotate(0deg)";
+        }
+
+    } else {
+
+        lessonsElement.style.display = "none";
+
+        if (arrow) {
+            arrow.style.transform = "rotate(-90deg)";
+        }
+
+    }
+
+}
+
+    function backToCourseContent() {
+
+    document.getElementById("lessonViewer").style.display =
+        "none";
+
+    document.getElementById("courseContentList").style.display =
+        "block";
+
+    renderCourseContent();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+/* =========================================================
+   FLATTEN LESSONS
+   This keeps compatibility with your existing progress system.
+   ========================================================= */
+
+let lessons = [];
+
+courseData.modules.forEach(module => {
+
+    module.lessons.forEach(lesson => {
+
+        lessons.push({
+            ...lesson,
+            moduleId: module.id,
+            moduleTitle: module.title
+        });
+
+    });
+
+});
 
 
         if (!lesson) {
@@ -4480,30 +4815,26 @@ const pages = [
        COMPLETE LESSON
     ======================================================== */
 
-    function completeCurrentLesson() {
+function completeCurrentLesson() {
 
+    if (!completedLessons.includes(currentLesson)) {
 
-        if (
-            !completedLessons.includes(currentLesson)
-        ) {
-
-            completedLessons.push(currentLesson);
-
-        }
-
+        completedLessons.push(currentLesson);
 
         localStorage.setItem(
             "lutsCompletedLessons",
             JSON.stringify(completedLessons)
         );
 
-
-        updateLessonStatus();
-
-        updateProgress();
-
     }
 
+    updateLessonStatus();
+
+    updateProgress();
+
+    alert("Lesson completed successfully!");
+
+}
 
 
     /* ========================================================
